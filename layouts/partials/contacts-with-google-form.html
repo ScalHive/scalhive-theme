@@ -1,0 +1,50 @@
+{{ $folder := .Params.form_folder }}
+{{ $mySections := slice $folder }}
+{{ $form := where .Site.RegularPages "Section" "in" $mySections }}
+{{ $form_count := len $form }}
+
+<article class="mw8 mw7-m nb5 center">
+    <div class="db pt5 ph0-l ph4 no-underline dark-gray">
+        <div class="flex flex-column-ns pb4-l pb5-m ">
+            <div class="f4-5-l f5 w-100-ns w-40 lh-copy mw-3-l">
+                {{ .Content }}
+            </div>
+
+            {{ if ge $form_count 1 }}
+            <div class="f5 pl4 pl0-ns pv5-ns w-100-ns w-60 center mw-2-l">
+                <script>let submitted=false;</script>
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='{{ .Params.response_page }}';}"></iframe>
+                <form action="{{ .Params.action }}" method="post" target="hidden_iframe" onsubmit="submitted=true">
+
+                {{ range $form }}
+                    <div>
+                    {{ if eq .Params.type "textarea" }}
+                    <textarea class="form-input"  rows="{{ .Params.rows }}" placeholder="{{ .Params.placeholder }}"
+                              name="{{ .Params.name }}" maxlength="{{ .Params.maxlength }}"
+                              {{ if .Params.required }} required {{ end }}></textarea>
+                    {{ else if eq .Params.type "select" }}
+                    <select class="form-input" name="{{ .Params.name }}" {{ if .Params.required }} required {{ end }}>
+                        <option class="" value="">{{ .Params.placeholder }}</option>
+                        {{ $options_value := .Params.options_value }}
+                        {{ range $options_value }}
+                            <option class="" value="{{ . }}">{{ . }}</option>
+                        {{ end }}
+                    </select>
+                    {{ else }}
+                    {{/* Default type - input */}}
+                    <input class="form-input {{ .Params.required }}"  type="{{ .Params.input_type }}" placeholder="{{ .Params.placeholder }}"
+                           name="{{ .Params.name }}" maxlength="{{ .Params.maxlength }}" {{ if .Params.pattern }} pattern="{{ .Params.pattern }}" {{ end }}
+                           {{ if .Params.hidden }} style="display:none" {{ end }} {{ if .Params.required }} required {{ end }}>
+                    {{ end }}
+                    </div>
+
+                {{ end }}
+                    <div class="tc f4-5-l">
+                        <button type="submit">{{ .Params.submit_button }}</button>
+                    </div>
+                </form>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</article>

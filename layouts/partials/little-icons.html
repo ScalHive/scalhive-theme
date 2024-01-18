@@ -1,0 +1,35 @@
+<div class="flex-l mt2 mw8 center">
+    <article class="center cf pv4 ph4">
+        <div class="nested-copy-line-height lh-copy f4-5-l f5 {{ $.Param "text_color" | default "dark-gray" }}">
+            {{ if .Params.article_title }}
+                <h3 class="tc ph5-m" style="color:{{ $.Param "middle_title_color_code" | default "#555555" }};">
+                    {{ .Params.article_title }}
+                </h3>
+            {{ end }}
+            {{ .Content }}
+            {{ if .Params.article_subtitle }}
+                <h4 class="pt4 ma0-m mb0-ns" style="color:{{ $.Param "middle_title_color_code" | default "#555555" }};">
+                    {{ .Params.article_subtitle }}
+                </h4>
+            {{ end }}
+        </div>
+    </article>
+</div>
+
+{{ $folder := .Params.sections_folder }}
+{{ $mySections := slice $folder }}
+{{ $sections := where .Site.RegularPages "Section" "in" $mySections }}
+{{ $sections_count := len $sections }}
+
+{{ if ge $sections_count 1 }}
+<div class="w-90-ns w-90-m w-70-l center">
+    <div class="flex flex-wrap justify-center items-center">
+        {{/* Range through the section */}}
+        {{ range $sections }}
+        <div class="w-third-l w-50-m w-100 pa3-l figure-ma">
+            {{ .Content }}
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

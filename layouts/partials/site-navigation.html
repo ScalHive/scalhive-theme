@@ -1,0 +1,55 @@
+<nav class="pv2 ph3 ph4-l sticky-header main-navigation">
+  <div class="flex justify-between items-center center">
+    <div class="flex items-center f5 f4-l fw4 pl4-l white">
+    <a href="{{ .Site.Home.RelPermalink }}">
+      {{ with .Site.Params.siteLogo }}
+        <img src="{{ relURL . }}" class="w100 mw3-l v-mid site-logo" alt="{{ $.Site.Title }}" >
+      {{ end }}
+    </a>
+      <a href="{{ .Site.Home.RelPermalink }}" class="f3-l f0-m f0-ns fw2 pl3 hover-white no-underline white-90 text-bold">
+        {{ .Site.Title }}
+      </a>
+    </div>
+
+
+    <div class="flex flex-row-reverse-ns items-center">
+      {{ if .Site.Menus.main }}
+      <ul class="{{ cond (eq $.Site.Language.LanguageDirection " rtl ") "pr0 ml3" "pl0 mr3" }}">
+
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+
+        {{ if .HasChildren }}
+        <li class="dropdown list f5 f4-l fw4 dib pl4-l pl2 menu-item-has-children {{ cond (eq $.Site.Language.LanguageDirection " rtl ") "pl3" "pr3" }}">
+          <a class="hover-white no-underline white-90" href="{{ .URL }}">
+            {{ .Pre }}
+            <span>{{ .Name }}</span>
+            <span>{{ .PageRef }}</span>
+          </a>
+          <ul class="sub-menu dropdown-content">
+            {{ range .Children }}
+              <li class="list f6 f5-l fw4 db pa2 {{ cond (eq $.Site.Language.LanguageDirection " rtl ") "pl3" "pr3" }}">
+                <a class="hover-black no-underline black-70" href="{{ .URL }}">{{ .Name }}</a>
+                <span>{{ .PageRef }}</span>
+              </li>
+            {{ end }}
+          </ul>
+        </li>
+        {{ else }}
+        <li class="list f5 f4-l fw4 dib pl4-l pl2 {{ cond (eq $.Site.Language.LanguageDirection " rtl ") "pl3" "pr3" }}">
+          <a class="hover-white no-underline white-90" href="{{ .URL }}">
+            {{ .Pre }}
+            <span>{{ .Name }}</span>
+            <span>{{ .PageRef }}</span>
+          </a>
+        </li>
+        {{ end }}
+        {{ end }}
+      </ul>
+      {{ end }}
+      {{ partial "i18nlist.html" . }}
+    </div>
+
+    <!--      {{ partialCached "social-follow.html" . }}-->
+  </div>
+</nav>

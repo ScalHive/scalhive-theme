@@ -1,0 +1,31 @@
+<meta itemprop="name" content="{{ .Title }}">
+<meta itemprop="description" content="{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+<meta itemprop="type" content="{{ if eq .Params.type "article" }}article{{ else }}website{{ end }}" >
+
+{{- if $.Params.sharing_image -}}
+    {{- with $.Params.sharing_image -}}
+    <meta itemprop="image" content="{{ . | absURL }}">
+    {{- end -}}
+{{- else -}}
+    {{- with $.Site.Params.default_sharing_image }}
+    <meta itemprop="image" content="{{ . | absURL }}">
+    {{ end -}}
+{{- end -}}
+
+{{- if eq .Params.type "article" -}}
+    {{- $iso8601 := "2006-01-02T15:04:05-07:00" -}}
+
+    {{ with .PublishDate }}
+        <meta itemprop="datePublished" {{ .Format $iso8601 | printf "content=%q" | safeHTMLAttr }} >
+    {{ end}}
+
+    {{ with .Lastmod }}
+        <meta itemprop="dateModified" {{ .Format $iso8601 | printf "content=%q" | safeHTMLAttr }} >
+    {{ end}}
+
+    <meta itemprop="wordCount" content="{{ .WordCount }}">
+{{- end -}}
+
+{{ if .Params.keywords }}
+<meta itemprop="keywords" content="{{ range $index, $keyword := .Params.keywords }}{{ $keyword }},{{ end }}" >
+{{ end }}
