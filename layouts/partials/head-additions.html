@@ -1,0 +1,15 @@
+<script defer src="{{ "/js/scrolling.js" | urlize | relURL }}"></script>
+<script defer src="{{ "/js/navigation.js" | urlize | relURL }}"></script>
+<style>
+    :root {
+        --site-color: {{ $.Param "middle_title_color_code" }};
+    }
+    .image-header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: url("{{ .Site.Params.header_image_line }}") left;
+        box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.4);
+        z-index: 97;
+    }
+</style>

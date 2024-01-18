@@ -1,0 +1,22 @@
+pre, .pre  {
+  overflow-x: auto;
+  overflow-y: auto;
+  border-radius: 5px;
+}
+
+pre  code {
+  display: block;
+  padding: 1.5em 1.5em;
+  white-space: pre;
+  font-size: .875rem;
+  line-height: 2;
+}
+
+pre {
+  background-color: hsl(0,0%,96.5%);
+  color: #333;
+  white-space: pre;
+
+  hyphens: none;
+  position: relative;
+}

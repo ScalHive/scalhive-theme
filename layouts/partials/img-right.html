@@ -1,0 +1,21 @@
+<div class="center cf pt5 ph3 ph5-l mbn4-ns mw8-5">
+    <div class="f4 f4-5-m f4-5-ns pb5 ph3 tc lh-copy {{ $.Param "text_color" | default "dark-gray" }}">
+        {{ .Content }}
+    </div>
+
+{{ $folder := .Params.sections_folder }}
+{{ $mySections := slice $folder }}
+{{ $sections := where .Site.RegularPages "Section" "in" $mySections }}
+{{ $sections_count := len $sections }}
+
+{{ if ge $sections_count 1 }}
+<div class="w-100 mw8-5 center">
+    {{ range $sections }}
+        <div class="relative w-100 mb4">
+            {{ .Render "section-image-right" }}
+        </div>
+    {{ end }}
+</div>
+{{ end }}
+
+</div>
