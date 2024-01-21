@@ -1,3 +1,3 @@
-module gitlab.com/rework-space.com/rs-site/rs-theme
+module github.com/TNTU-RS-internship/scalhive-theme.git
 
 go 1.14
