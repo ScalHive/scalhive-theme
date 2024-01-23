@@ -37,14 +37,14 @@ p {
 
 /* select any text */
 ::-moz-selection { /* for Firefox */
-  color: white;
-  background: rgba(0, 128, 128, 0.7);
+  color: #17181c;
+  background: #fde74c;
 }
 
 /* select any text */
 ::selection {
-  color: white;
-  background: rgba(0, 128, 128, 0.7);
+  color: #17181c;
+  background: #fde74c;
 }
 
 #btnBackToTop {
