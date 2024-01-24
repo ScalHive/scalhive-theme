@@ -1,8 +1,58 @@
 /* Put your custom styles here and run `npm start` from the "src" directory on */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap");
+
+/*
+  Important info! The public directory that Hugo builds does not retain
+  the root's file structure. The files are rearranged and their location changes.
+  The location depends on how Hugo's static site generator generates
+  the public directory from the project's source code.
+  Hugo suggests that files like those of font and images should be kept
+  in a folder named "static" in project's root
+  When hugo builds th web page, all references
+  to static files start from the static directory
+  (look to stackbit.yaml, field: "staticDir: exampleSite/static").
+
+  Read here: https://gohugo.io/content-management/static-files/
+
+  This means that all links start with ...static/<your link>
+
+  url("/fonts/IgraSans.woff2"):
+  that`s correct because after build, link will be like: ...static/fonts/IgraSans.woff2
+*/
+
+@font-face {
+  font-family: "Igra Sans";
+  src: local("Igra Sans"), local("IgraSans"),
+  url("/fonts/IgraSans.woff2") format("woff2"),
+  url("/fonts/IgraSans.woff") format("woff");
+  font-weight: 400;
+}
+
+:root{
+  --site-color: #fde74c;
+  --igra-sans: "Igra Sans", sans-serif;
+  --roboto: "Roboto", sans-serif;
+}
 
 #TableOfContents ul li {
   margin-bottom: 1em;
 }
+
+.basic-text-font{
+  font-family: var(--igra-sans);
+}
+.title-text-font{
+  font-family: var(--roboto);
+}
+
+
+.roboto{
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: white;
+}
+
 
 .lh-copy blockquote {
   display: block;
