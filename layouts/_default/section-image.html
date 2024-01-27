@@ -1,0 +1,7 @@
+{{ $image_class := .Params.img_render_class }}
+
+{{ if .Params.section_image }}
+{{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
+    {{ partial "img-figure.html" . }}
+{{ end }}
+

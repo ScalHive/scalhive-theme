@@ -43,13 +43,15 @@
 }
 
 .basic-text-font{
-  font-family: var(--igra-sans);
+  font-family: "Igra Sans", sans-serif;
 }
 .title-text-font{
-  font-family: var(--inter);
+  font-family: "Inter", sans-serif;
   font-weight: 800;
 }
-
+.input-text-font{
+  font-family: "Igra Sans", sans-serif;
+}
 .obj-fit-cover{
   width: 100%;
   height: 100%;
@@ -59,12 +61,32 @@
 .border-radius{
   border-radius: 1rem;
 }
-
+.br-10{
+  border-radius: 10px;
+}
+.br-15{
+  border-radius: 15px;
+}
+.br-20{
+  border-radius: 20px;
+}
+.site-color-bg{
+  background: #fde74c;
+}
 .roboto{
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   color: white;
 }
+button, input, optgroup, select, textarea {
+  font-family: "Igra Sans", sans-serif;
+  color: #001b44;
+  font-weight: 400;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0
+}
+
 
 .lh-copy blockquote {
   display: block;
@@ -110,7 +132,7 @@ p {
 }
 
 #btnBackToTop {
-  background-color: var(--site-color);
+  background-color: #fde74c;
   border: none;
   width: 50px;
   height: 50px;
@@ -132,7 +154,7 @@ p {
 }
 #btnBackToTop:hover {
   cursor: pointer;
-  background:var(--site-color);
+  background:#fde74c;
   opacity:0.6;
 }
 #btnBackToTop:active {
@@ -288,7 +310,7 @@ footer {
 }
 
 .privacy-page h2 {
-  color: var(--site-color);
+  color: #fde74c;
 }
 
 .form-input {
@@ -306,8 +328,8 @@ footer {
 }
 
 .form-input:focus {
-  box-shadow:0 1px 0 var(--site-color);
-  border-color: var(--site-color);
+  box-shadow:0 1px 0 #fde74c;
+  border-color: #fde74c;
 }
 
 input {
@@ -336,20 +358,21 @@ textarea {
 
 [type="submit"] {
   width: 100%;
+  height: 42px;
   text-align: center;
-  background:var(--site-color);
-  border-radius:5px;
+  background:#fde74c;
+  border-radius: 10px;
   border:0;
   cursor:pointer;
-  color:white;
+  color:#181818;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  font-weight:700;
+  font-weight:400;
 }
 
 [type="submit"]:hover {
-  background:var(--site-color);
-  opacity:0.6;
+  background:#fde74c;
+  opacity:0.85;
 }
 
 [type="submit"]:active {
@@ -357,16 +380,22 @@ textarea {
 }
 
 .color-link a {
-  color: var(--site-color);
+  color: #fde74c;
   background-color: white;
   text-decoration: none;
   appearance: none;
 }
 .color-link a:hover, .color-link a:active, .color-link a:focus {
-  color: var(--site-color);
+  color: #fde74c;
   opacity:0.6;
-  background-color: white;
   appearance: none;
+}
+
+.max-h-30{
+  max-height: 30rem;
+}
+.cus-shed{
+  box-shadow: 0px 0px 25px 0px rgba(23, 22, 17, 0.15);
 }
 
 @media all and (min-width: 1200px) {

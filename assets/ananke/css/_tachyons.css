@@ -1354,6 +1354,9 @@ img {
 .mw7 {
     max-width: 48rem
 }
+.mw7_5{
+    max-width: 56rem
+}
 
 .mw8 {
     max-width: 64rem
@@ -1415,8 +1418,16 @@ img {
     width: 40%
 }
 
+.w-45{
+    width: 45%
+}
+
 .w-50 {
     width: 50%
+}
+
+.w-55{
+    width: 55%
 }
 
 .w-60 {
@@ -2518,6 +2529,10 @@ img {
     padding: 1rem
 }
 
+.pa3_5 {
+    padding: 1.5rem
+}
+
 .pa4 {
     padding: 2rem
 }
@@ -2548,6 +2563,10 @@ img {
 
 .pl3 {
     padding-left: 1rem
+}
+
+.pl3_5 {
+    padding-left: 1.5rem
 }
 
 .pl4 {
@@ -6130,6 +6149,7 @@ img {
         max-width: 48rem
     }
 
+
     .mw8-m {
         max-width: 64rem
     }
@@ -7912,6 +7932,11 @@ img {
     .mw7-l {
         max-width: 48rem
     }
+
+    .mw7_5-l{
+        max-width: 56rem
+    }
+
 
     .mw8-l {
         max-width: 64rem
