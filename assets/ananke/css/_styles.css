@@ -411,6 +411,13 @@ textarea {
   color: #fefefa;
 }
 
+.nav-menu-list-item-m[aria-current="page"]{
+  background-color: #fde74c;
+  text-decoration: underline solid #fde74c 0.12rem;
+  text-underline-offset: 0.35rem;
+  color: #fefefa;
+}
+
 @media all and (min-width: 1200px) {
   .f4-5-l {
     font-size: 1.12rem;
