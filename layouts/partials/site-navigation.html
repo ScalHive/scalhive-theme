@@ -12,7 +12,7 @@
     </div>
 
 
-    <div class="flex flex-row-reverse-ns items-center">
+    <div class="nav-font flex flex-row-reverse-ns items-center">
       {{ if .Site.Menus.main }}
       <ul class="{{ cond (eq $.Site.Language.LanguageDirection " rtl ") "pr0 ml3" "pl0 mr3" }}">
 
@@ -21,7 +21,7 @@
 
         {{ if .HasChildren }}
         <li class="dropdown list f5 f4-l fw4 dib pl4-l pl2 menu-item-has-children {{ cond (eq $.Site.Language.LanguageDirection " rtl ") "pl3" "pr3" }}">
-          <a class="hover-white no-underline white-90" href="{{ .URL }}">
+          <a class="nav-menu-list-item hover-white no-underline white-90"  href="{{ .URL }}">
             {{ .Pre }}
             <span>{{ .Name }}</span>
             <span>{{ .PageRef }}</span>
@@ -29,7 +29,7 @@
           <ul class="sub-menu dropdown-content">
             {{ range .Children }}
               <li class="list f6 f5-l fw4 db pa2 {{ cond (eq $.Site.Language.LanguageDirection " rtl ") "pl3" "pr3" }}">
-                <a class="hover-black no-underline black-70" href="{{ .URL }}">{{ .Name }}</a>
+                <a class="hover-black no-underline black-70"  href="{{ .URL }}">{{ .Name }}</a>
                 <span>{{ .PageRef }}</span>
               </li>
             {{ end }}
@@ -37,7 +37,7 @@
         </li>
         {{ else }}
         <li class="list f5 f4-l fw4 dib pl4-l pl2 {{ cond (eq $.Site.Language.LanguageDirection " rtl ") "pl3" "pr3" }}">
-          <a class="hover-white no-underline white-90" href="{{ .URL }}">
+          <a  class="nav-menu-list-item hover-white no-underline white-90" href="{{ .URL }}">
             {{ .Pre }}
             <span>{{ .Name }}</span>
             <span>{{ .PageRef }}</span>
@@ -49,7 +49,16 @@
       {{ end }}
       {{ partial "i18nlist.html" . }}
     </div>
-
     <!--      {{ partialCached "social-follow.html" . }}-->
+    <script>
+      const nav_item = document.querySelectorAll('.nav-menu-list-item');
+      nav_item.forEach(
+              (nav_link) => {
+                if(nav_link.href === window.location.href){
+                  nav_link.setAttribute('aria-current', 'page');
+                }
+              }
+      )
+    </script>
   </div>
 </nav>
