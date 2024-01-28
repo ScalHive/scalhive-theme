@@ -7,7 +7,7 @@
   {{ $section := .Site.GetPage "section" .Section }}
 
   <article class="flex-l flex-wrap justify-between mw8 center ph3 ph4-m post-content">
-    <header class="mt4 w-100">
+    <header class="mt4 w-100 basic-text-font">
       <aside class="instapaper_ignoref b helvetica tracked">
           {{/*
           CurrentSection allows us to use the section title instead of inferring from the folder.
@@ -46,7 +46,7 @@
         <span class="f6 mv4 dib tracked"> - {{ i18n "wordCount" .WordCount }} </span>
       {{ end }}
     </header>
-    <div class="nested-copy-line-height lh-solid {{ $.Param "post_content_classes"  | default "serif"}} f4-5-l f5-m nested-links {{ $.Param "text_color" | default "dark-gray" }}">
+    <div class="nested-copy-line-height lh-solid {{ $.Param "post_content_classes"  | default "serif"}} f4-5-l f5-m basic-text-font nested-links {{ $.Param "text_color" | default "dark-gray" }}">
       {{- .Content -}}
       {{- partial "tags.html" . -}}
       <div class="mt6 instapaper_ignoref">
