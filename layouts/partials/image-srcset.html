@@ -29,14 +29,14 @@
 
 {{- $set := delimit $srcset "," -}}
 
-<figure class=" overflow-hidden {{ .Params.figure_render_class }}">
+<figure class="overflow-hidden {{ .Params.figure_render_class }}">
     <img
         srcset="{{ $set }}"
         sizes="(max-width: 480px) 480px, 100vw"
         src="{{ $res.RelPermalink }}"
         alt="{{ .Params.alt }}"
         {{- if .Params.img_render_class -}}
-        class="{{ .Params.img_render_class }} "
+        class="{{ .Params.img_render_class }}"
         {{- end -}}
     >
     {{- if .Params.image_title -}}
