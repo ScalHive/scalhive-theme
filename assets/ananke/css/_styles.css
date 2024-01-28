@@ -55,6 +55,10 @@
 .input-text-font{
   font-family: "Igra Sans", sans-serif;
 }
+.nav-font{
+  font-family: "Igra Sans", sans-serif;
+  font-weight: 400;
+}
 .obj-fit-cover{
   width: 100%;
   height: 100%;
@@ -399,6 +403,19 @@ textarea {
 }
 .cus-shed{
   box-shadow: 0px 0px 25px 0px rgba(23, 22, 17, 0.15);
+}
+
+.nav-menu-list-item[aria-current="page"]{
+  text-decoration: underline solid #fde74c 0.12rem;
+  text-underline-offset: 0.4rem;
+  color: #fefefa;
+}
+
+.nav-menu-list-item-m[aria-current="page"]{
+  background-color: #fde74c;
+  text-decoration: underline solid #fde74c 0.12rem;
+  text-underline-offset: 0.35rem;
+  color: #fefefa;
 }
 
 @media all and (min-width: 1200px) {
