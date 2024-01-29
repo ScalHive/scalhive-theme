@@ -5,7 +5,7 @@
 
         {{ if eq .Params.layout "privacy"}}
         <div class="center cf pv5 pv4-m ph5 ph3-ns mw8">
-            <div class="nested-copy-line-height lh-copy f5 f6-m privacy-page {{ $.Param "text_color" | default "dark-gray" }}">
+            <div class="title-text-font nested-copy-line-height lh-copy f5 f6-m privacy-page {{ $.Param "text_color" | default "#454545" }}">
                 {{ .Content }}
             </div>
         </div>
@@ -27,7 +27,7 @@
 
         {{ else if eq .Params.layout "content-center" }}
         <div class="center cf pv5 ph5-m ph4 mw8 mw7-m">
-            <div class="tc nested-copy-line-height lh-copy f4-l f5 {{ $.Param "text_color" | default "dark-gray" }}">
+            <div class="title-text-font tc nested-copy-line-height lh-copy f4-l f5 {{ $.Param "text_color" | default "#454545" }}">
                 {{ .Content }}
             </div>
         </div>
@@ -35,7 +35,7 @@
         {{ else }}
         {{/* Default layout */}}
         <div class="center cf pv5 ph5-m ph4 mw8 mw7-m">
-            <div class="nested-copy-line-height lh-copy f4-l f5 ml4-m nested-links {{ $.Param "text_color" | default "dark-gray" }}">
+            <div class="title-text-font nested-copy-line-height lh-copy f4-l f5 ml4-m nested-links {{ $.Param "text_color" | default "#454545" }}">
                 {{ .Content }}
             </div>
         </div>
@@ -44,15 +44,15 @@
     </div>
 </div>
 
-<div class="center tc f4 f5-ns fw4 ph5-ns lh-title" style="color:{{ $.Param "middle_title_color_code" | default "#555555" }};">
+<div class="final-message-font center tc f4 f5-ns fw4 ph5-ns lh-title" style="color:{{ $.Param "final_message_color" | default "#454545" }};">
     {{ .Params.final_message }}
 </div>
 
 {{ if ne .Params.layout "contacts-with-google-form" }}
 {{ if .Site.Params.footerContactButton }}
 <div class="tc pt4">
-    <a class="f6 link w-20 w-30-m w-50-ns dim br2 ph3 pv2 dib white"
-       style="background-color:{{ $.Param "middle_title_color_code" | default "#555555" }};" href="{{ .Site.Params.footerContactButtonPath }}">
+    <a class="f6 input-text-font link w-20 w-30-m w-50-ns dim br-10 ph3 pv2-5 dib"
+       style="background-color:{{ $.Param "footer_contact_button_color" | default "#555555" }}; color:{{ $.Param "footer_contact_button_text_color" | default "#ffffff" }};" href="{{ .Site.Params.footerContactButtonPath }}">
         {{ .Site.Params.footerContactButton }}
     </a>
 </div>
