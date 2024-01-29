@@ -41,16 +41,25 @@
 #TableOfContents ul li {
   margin-bottom: 1em;
 }
-
+.header_tittle_font{
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+}
 .igra-sans{
   font-family: "Igra Sans", sans-serif;
 }
 .basic-text-font{
-  font-family: "Igra Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
 }
 .title-text-font{
   font-family: "Inter", sans-serif;
   font-weight: 800;
+}
+.final-message-font{
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
 }
 .input-text-font{
   font-family: "Igra Sans", sans-serif;
@@ -94,6 +103,10 @@ button, input, optgroup, select, textarea {
   margin: 0
 }
 
+.pv2-5 {
+  padding-top: .75rem;
+  padding-bottom: .75rem
+}
 
 .lh-copy blockquote {
   display: block;
