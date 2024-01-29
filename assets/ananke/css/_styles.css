@@ -41,7 +41,11 @@
 #TableOfContents ul li {
   margin-bottom: 1em;
 }
-
+.header_tittle_font{
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+}
 .igra-sans{
   font-family: "Igra Sans", sans-serif;
 }
