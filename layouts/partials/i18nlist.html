@@ -1,17 +1,17 @@
 {{ if .IsTranslated }}
     {{ if .Site.Params.mobileMenuLight }}
-        <ul class="ba b--white-90 language-block {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pr0 ml3" "pl0 mr3" }}">
+        <ul class="br-10 ba b--white-90 language-block {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pr0 ml3" "pl0 mr3" }}">
             {{ range .Translations }}
-            <li class="list tc f5 f4-ns fw4 dib pl2 {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3" }}">
-                <a class="hover-white no-underline white-90 dark-gray-ns language_icon" href="{{ .RelPermalink }}">{{ .Lang }}</a>
+            <li class="list tc f5 f4-ns fw4 dib pl3 {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3" }}">
+                <a class="nav-font no-underline white-90 dark-gray-ns language_icon" href="{{ .RelPermalink }}">{{ .Lang }}</a>
             </li>
             {{ end}}
         </ul>
     {{ else }}
-        <ul class="ba b--white-90 language-block {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pr0 ml3" "pl0 mr3" }}">
+        <ul class="br-10 ba b--white-90 language-block {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pr0 ml3" "pl0 mr3" }}">
             {{ range .Translations }}
-            <li class="list tc f5 f4-ns fw4 dib pl2 {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3" }}">
-                <a class="hover-white no-underline white-90 language_icon" href="{{ .RelPermalink }}">{{ .Lang }}</a>
+            <li class="list tc f5 f4-ns fw4 dib pl3 {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3" }}">
+                <a class="nav-font no-underline white-90 language_icon" href="{{ .RelPermalink }}">{{ .Lang }}</a>
             </li>
             {{ end}}
         </ul>

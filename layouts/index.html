@@ -1,74 +1,21 @@
 {{ define "main" }}
 {{ if eq .Params.layout "img-left-plus-right" }}
-<div class="center cf pt5 pb4 ph4-l pa4-m pa4-ns mw8">
-    <div class="nested-copy-line-height lh-copy f4-l f5 {{ $.Param "text_color" | default "dark-gray" }}">
-    {{ .Content }}
-</div>
-</div>
-
-{{ $folder_left := .Params.sections_folder_left }}
-{{ $mySections_left := slice $folder_left }}
-{{ $sections_left := where .Site.RegularPages "Section" "in" $mySections_left }}
-{{ $sections_count_left := len $sections_left }}
-
-{{ if ge $sections_count_left 1 }}
-<div class="pv3 ph4 pa4-l w-100 mw8-5 center">
-    {{ if .Params.section_title_one }}
-    <h2 class="lh-copy f3-l f4 mt0 mb4" style="color:{{ $.Param "middle_title_color_code" | default "#555555" }};" >
-    {{ .Params.section_title_one }}
-    </h2>
-    {{ end }}
-    <div class="w-100 center bb b--black-10">
-        {{ range $sections_left }}
-        <div class="relative w-100 bt b--black-10">
-            {{ .Render "section-image-left" }}
-        </div>
-        {{ end }}
-    </div>
-</div>
-{{ end }}
-
-{{ $folder_right := .Params.sections_folder_right }}
-{{ $mySections_right := slice $folder_right }}
-{{ $sections_right := where .Site.RegularPages "Section" "in" $mySections_right }}
-{{ $sections_count_right := len $sections_right }}
-
-{{ if ge $sections_count_right 1 }}
-<div class="pa3 pa4-l ph4-m w-100 mw8-5 center">
-    {{ if .Params.section_title_two }}
-    <div class="lh-copy f4 ph3-ns" style="color:{{ $.Param "middle_title_color_code" | default "#555555" }};" >
-    <h2 class="lh-copy f3-l f4" >
-        {{ .Params.section_title_two }}
-    </h2>
-</div>
-{{ end }}
-<div class="w-100 center">
-    {{ range $sections_right }}
-    <div class="relative w-100">
-        {{ .Render "section-image-right" }}
-    </div>
-    {{ end }}
-</div>
-</div>
-{{ end }}
-
-
-
+{{partial "img-left-plus-right.html" .}}
 {{ else }}
 {{/* Default layout */}}
-<article class="cf ph3 ph5-l pv3 pv4-l f4-5 tc-l center measure-wide lh-copy {{ $.Param "text_color" | default "dark-gray" }}">
-{{ .Content }}
+<article class="title-text-font cf ph3 ph5-l pv3 pv4-l f4-5 tc-l center measure-wide lh-copy {{ $.Param " text_color" | default "#454545" }}">
+    {{ .Content }}
 </article>
 {{ end }}
 
-<div class="center mt2 tc f4 f5-ns fw4 pt4-ns ph5-ns lh-title" style="color:{{ $.Param "middle_title_color_code" | default "#555555" }};">
-{{ .Params.final_message }}
+<div class="final-message-font center mt2 tc f4 f5-ns fw4 pt4-ns ph5-ns lh-title" style="color:{{ $.Param "final_message_color" | default "#454545" }};">
+    {{ .Params.final_message }}
 </div>
 
 {{ if .Site.Params.footerContactButton }}
 <div class="tc pt4">
-    <a class="f6 link w-20 w-30-m w-50-ns dim br2 ph3 pv2 dib white"
-       style="background-color:{{ $.Param "middle_title_color_code" | default "#555555" }};" href="{{ .Site.Params.footerContactButtonPath }}">
+    <a class="f6 input-text-font link w-20 w-30-m w-50-ns dim br-10 ph3 pv2-5 dib"
+       style="background-color:{{ $.Param "footer_contact_button_color" | default "#555555" }}; color:{{ $.Param "footer_contact_button_text_color" | default "#ffffff" }};" href="{{ .Site.Params.footerContactButtonPath }}">
     {{ .Site.Params.footerContactButton }}
     </a>
 </div>

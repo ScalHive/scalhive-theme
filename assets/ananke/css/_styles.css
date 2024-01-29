@@ -41,16 +41,32 @@
 #TableOfContents ul li {
   margin-bottom: 1em;
 }
-
-.basic-text-font{
+.header_tittle_font{
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+}
+.igra-sans{
   font-family: "Igra Sans", sans-serif;
+}
+.basic-text-font{
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
 }
 .title-text-font{
   font-family: "Inter", sans-serif;
   font-weight: 800;
 }
+.final-message-font{
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
 .input-text-font{
   font-family: "Igra Sans", sans-serif;
+}
+.nav-font{
+  font-family: "Igra Sans", sans-serif;
+  font-weight: 400;
 }
 .obj-fit-cover{
   width: 100%;
@@ -87,6 +103,10 @@ button, input, optgroup, select, textarea {
   margin: 0
 }
 
+.pv2-5 {
+  padding-top: .75rem;
+  padding-bottom: .75rem
+}
 
 .lh-copy blockquote {
   display: block;
@@ -132,30 +152,32 @@ p {
 }
 
 #btnBackToTop {
+  box-shadow: 0px 0px 10px 0px rgba(23, 22, 17, 0.15);
   background-color: #fde74c;
   border: none;
   width: 50px;
   height: 50px;
   text-align: center;
-  border-radius: 4px;
+  border-radius: 10px;
   position: fixed;
   bottom: 30px;
   right: 30px;
   display: none;
   z-index: 98;
+  transition: 300ms ease-in-out;
 }
 #btnBackToTop::before {
   content: "";
   position: absolute;
   inset: 30%;
   transform: translateY(20%) rotate(-45deg);
-  border-top: 5px solid #fff;
-  border-right: 5px solid #fff;
+  border-top: 5px solid rgba(24, 24, 24, 0.8);
+  border-right: 5px solid rgba(24, 24, 24, 0.8);
 }
 #btnBackToTop:hover {
   cursor: pointer;
-  background:#fde74c;
-  opacity:0.6;
+  background: #f5e048;
+  transform: scale(0.99);
 }
 #btnBackToTop:active {
   background-color: #555;
@@ -394,8 +416,22 @@ textarea {
 .max-h-30{
   max-height: 30rem;
 }
+
 .cus-shed{
   box-shadow: 0px 0px 25px 0px rgba(23, 22, 17, 0.15);
+}
+
+.nav-menu-list-item[aria-current="page"]{
+  text-decoration: underline solid #fde74c 0.12rem;
+  text-underline-offset: 0.4rem;
+  color: #fefefa;
+}
+
+.nav-menu-list-item-m[aria-current="page"]{
+  background-color: #fde74c;
+  text-decoration: underline solid #fde74c 0.12rem;
+  text-underline-offset: 0.35rem;
+  color: #fefefa;
 }
 
 @media all and (min-width: 1200px) {

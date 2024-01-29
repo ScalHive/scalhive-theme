@@ -45,7 +45,7 @@
       {{ range .Site.Menus.main }}
       {{ if .HasChildren }}
         <li class="list f5 fw4 parent-menu-line bb b--black-10">
-          <a class="hover-black no-underline pa2 fw6" href="{{ .URL }}" style="color:{{ $.Param "middle_title_color_code" | default "#555555" }};">
+          <a class="nav-font nav-menu-list-item-m hover-black no-underline pa2 fw4" href="{{ .URL }}" style="color:{{ $.Param "middle_title_color_code" | default "#555555" }};">
           {{ .Pre }}
           <span>{{ .Name }}</span>
           <span>{{ .PageRef }}</span>
@@ -61,7 +61,7 @@
         </li>
       {{ else }}
         <li class="list f5 fw4 parent-menu-line bb b--black-10">
-          <a class="hover-black no-underline pa2 fw6" href="{{ .URL }}" style="color:{{ $.Param "middle_title_color_code" | default "#555555" }};">
+          <a class="nav-font nav-menu-list-item-m hover-black no-underline pa2 fw4" href="{{ .URL }}" style="color:{{ $.Param "middle_title_color_code" | default "#555555" }};">
           {{ .Pre }}
           <span>{{ .Name }}</span>
           <span>{{ .PageRef }}</span>
@@ -72,5 +72,14 @@
     </ul>
   </div>
   {{ end }}
-
+  <script>
+    const nav_item_m = document.querySelectorAll('.nav-menu-list-item-m');
+    nav_item_m.forEach(
+            (nav_link) => {
+              if(nav_link.href === window.location.href){
+                nav_link.setAttribute('aria-current', 'page');
+              }
+            }
+    )
+  </script>
 </nav>

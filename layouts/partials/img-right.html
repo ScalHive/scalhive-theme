@@ -1,5 +1,5 @@
 <div class="center cf pt5 ph3 ph5-l mbn4-ns mw8-5">
-    <div class="f4 f4-5-m f4-5-ns pb5 ph3 tc lh-copy {{ $.Param "text_color" | default "dark-gray" }}">
+    <div class="title-text-font f4 f4-5-m f4-5-ns pb5 ph3 tc lh-copy" style="color:{{ $.Param "text_color" | default "#1c1c1c" }};">
         {{ .Content }}
     </div>
 
@@ -10,11 +10,13 @@
 
 {{ if ge $sections_count 1 }}
 <div class="w-100 mw8-5 center">
+    <div class="w-100 center bb b--black-10">
     {{ range $sections }}
-        <div class="relative w-100 mb4">
+        <div class="relative w-100 bt b--black-10">
             {{ .Render "section-image-right" }}
         </div>
     {{ end }}
+    </div>
 </div>
 {{ end }}
 
