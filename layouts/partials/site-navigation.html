@@ -52,15 +52,6 @@
       {{ partial "i18nlist.html" . }}
     </div>
     <!--      {{ partialCached "social-follow.html" . }}-->
-    <script>
-      const nav_item = document.querySelectorAll('.nav-menu-list-item');
-      nav_item.forEach(
-              (nav_link) => {
-                if(nav_link.href === window.location.href){
-                  nav_link.setAttribute('aria-current', 'page');
-                }
-              }
-      )
-    </script>
+    <script defer src="{{ "/js/current-page.js" | urlize | relURL }}"></script>
   </div>
 </nav>
