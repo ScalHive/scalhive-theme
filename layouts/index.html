@@ -12,7 +12,10 @@
     {{ .Params.final_message }}
 </div>
 
-{{ if .Site.Params.footerContactButton }}
-    {{ partial "contact-us-btn.html" . }}
+{{ if ne .Params.layout "contacts-with-google-form" }}
+    {{ if .Site.Params.footerContactButton }}
+        {{ partial "contact-us-btn.html" . }}
+    {{ end }}
 {{ end }}
+
 {{ end }}
