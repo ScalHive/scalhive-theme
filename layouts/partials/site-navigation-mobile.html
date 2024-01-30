@@ -13,9 +13,11 @@
           {{ end }}
         {{ end }}
       </a>
-      <a href="{{ .Site.Home.RelPermalink }}" class="f3-l f0-m f0-ns fw2 pl3 hover-white no-underline white-90 text-bold">
+      {{ if .Site.Params.showTitleNearLogo }}
+      <a href="{{ .Site.Home.RelPermalink }}" class="f3-l f0-m f0-ns fw2 pl3 hover-black no-underline black-90 text-bold">
         {{ .Site.Title }}
       </a>
+      {{ end }}
     </div>
     <div class="flex items-center">
       {{ partial "i18nlist.html" . }}

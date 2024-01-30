@@ -41,6 +41,11 @@
 #TableOfContents ul li {
   margin-bottom: 1em;
 }
+.logo_font{
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+}
 .header_tittle_font{
   font-family: "Inter", sans-serif;
   font-style: normal;
@@ -184,7 +189,7 @@ p {
 }
 
 .site-logo {
-  max-width: 3rem;
+  max-width: 9rem;
 }
 
 .sticky-header {
@@ -437,6 +442,10 @@ textarea {
 @media all and (min-width: 1200px) {
   .f4-5-l {
     font-size: 1.12rem;
+  }
+
+  .mw4-5-l {
+    max-width: 10rem
   }
 
   .mw-2-l {
