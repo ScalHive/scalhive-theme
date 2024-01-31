@@ -23,7 +23,7 @@
         <h2 class="tc f3 f4-m fw1 athelas mt0 mb0-m lh-title text-bold title-text-font color-link" style="color:{{ $.Param "middle_title_color" | default "#181818" }};" >
           <a href="{{.RelPermalink}}" class="title-text-font" style="color:{{ $.Param "middle_title_color" | default "#181818" }};">
             {{ .Title }}
-            </a>
+          </a>
         </h2>
         {{ if not .Date.IsZero }}
           <time class="f6 mv3 dib tracked" {{ printf `datetime="%s"` (.Date.Format "2006-01-02T15:04:05Z07:00") | safeHTMLAttr }}>
