@@ -13,9 +13,11 @@
           {{ end }}
         {{ end }}
       </a>
-      <a href="{{ .Site.Home.RelPermalink }}" class="f3-l f0-m f0-ns fw2 pl3 hover-white no-underline white-90 text-bold">
+      {{ if .Site.Params.showTitleNearLogo }}
+      <a href="{{ .Site.Home.RelPermalink }}" class="f3-l f0-m f0-ns fw2 pl3 hover-black no-underline black-90 text-bold">
         {{ .Site.Title }}
       </a>
+      {{ end }}
     </div>
     <div class="flex items-center">
       {{ partial "i18nlist.html" . }}
@@ -72,14 +74,5 @@
     </ul>
   </div>
   {{ end }}
-  <script>
-    const nav_item_m = document.querySelectorAll('.nav-menu-list-item-m');
-    nav_item_m.forEach(
-            (nav_link) => {
-              if(nav_link.href === window.location.href){
-                nav_link.setAttribute('aria-current', 'page');
-              }
-            }
-    )
-  </script>
+  <script defer src="{{ "/js/current-page.js" | urlize | relURL }}"></script>
 </nav>

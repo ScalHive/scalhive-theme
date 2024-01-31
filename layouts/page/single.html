@@ -49,14 +49,9 @@
 </div>
 
 {{ if ne .Params.layout "contacts-with-google-form" }}
-{{ if .Site.Params.footerContactButton }}
-<div class="tc pt4">
-    <a class="f6 input-text-font link w-20 w-30-m w-50-ns dim br-10 ph3 pv2-5 dib"
-       style="background-color:{{ $.Param "footer_contact_button_color" | default "#555555" }}; color:{{ $.Param "footer_contact_button_text_color" | default "#ffffff" }};" href="{{ .Site.Params.footerContactButtonPath }}">
-        {{ .Site.Params.footerContactButton }}
-    </a>
-</div>
-{{ end }}
+    {{ if .Site.Params.footerContactButton }}
+        {{ partial "contact-us-btn.html" . }}
+    {{ end }}
 {{ end }}
 
 {{ end }}
