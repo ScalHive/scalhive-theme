@@ -46,7 +46,7 @@
         <span class="f6 mv4 dib tracked"> - {{ i18n "wordCount" .WordCount }} </span>
       {{ end }}
     </header>
-    <div class="nested-copy-line-height lh-solid {{ $.Param "post_content_classes"  | default "serif"}} f4-5-l f5-m basic-text-font nested-links {{ $.Param "text_color" | default "dark-gray" }}">
+    <div class="nested-copy-line-height lh-solid {{ $.Param "post_content_classes"  | default "serif"}} f4-5-l f5-m basic-text-font nested-links {{ $.Param "text_color" | default "#181818" }}">
       {{- .Content -}}
       {{- partial "tags.html" . -}}
       <div class="mt6 instapaper_ignoref">
@@ -65,12 +65,7 @@
   </article>
 
 {{ if .Site.Params.footerContactButton }}
-<div class="tc pt4">
-    <a class="f6 link w-20 w-30-m w-50-ns dim br2 ph3 pv2 mb2 dib white"
-       style="background-color:{{ $.Param "middle_title_color_code" | default "#555555" }};" href="{{ .Site.Params.footerContactButtonPath }}">
-    {{ .Site.Params.footerContactButton }}
-    </a>
-</div>
+{{ partial "contact-us-btn.html" . }}
 {{ end }}
 
 {{ end }}

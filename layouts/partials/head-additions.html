@@ -2,7 +2,7 @@
 <script defer src="{{ "/js/navigation.js" | urlize | relURL }}"></script>
 <style>
     :root {
-        --site-color: {{ $.Param "middle_title_color_code" }};
+        --site-color: {{ $.Param "site_color" | default "#202020" }};
     }
     .image-header {
         position: fixed;
