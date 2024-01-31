@@ -506,6 +506,10 @@ textarea {
     padding-bottom: 229px;    /* Footer height */
   }
 
+  .max-h-20-ns{
+    max-height: 20rem;
+  }
+
   .f0-ns {
     font-size: 0;
   }
