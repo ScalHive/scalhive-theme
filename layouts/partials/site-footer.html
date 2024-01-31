@@ -7,18 +7,18 @@
 
 
     <div class="tc igra-sans" style="color: #2F2F2F">
-        <a href ="{{ .Site.Params.locationURL }}" class="f5 f6-ns fw4 pb2 ph3 underline-hover">
-        <div class="f5 f6-ns fw4 no-underline pb2 ph3">{{ .Site.Params.customFooterLine1 }}</div>
-        <div class="f5 f6-ns fw4 no-underline pb2 ph3">{{ .Site.Params.customFooterLine2 }}</div>
+        <a href ="{{ .Site.Params.locationURL }}" class="underline-hover" style="color: #4158CF">
+            <div class="f5 f6-ns fw4 pb2 ph3">{{ .Site.Params.customFooterLine1 }}</div>
+            <div class="f5 f6-ns fw4 pb2 ph3">{{ .Site.Params.customFooterLine2 }}</div>
         </a>
         <div class="f5 f6-ns fw4 no-underline pb2 ph3">{{ .Site.Params.customFooterLine3 }}</div>
     </div>
     <div class="flex items-center justify-between flex-column-reverse-m flex-column-reverse-ns ph3 ph3-ns w-70 w-80-ns center">
         <div class="igra-sans tc f6 f7-ns fw4 no-underline black-70 dn dib pv4 pv3-m pv3-ns ph3 ph4-ns" style="color: #2F2F2F">
-            <a class="hover-black black-70" href="{{ .Site.Home.Permalink }}{{ .Site.Params.footerPrivacyUrl }}">{{
-                .Site.Params.footerPrivacy }}</a>
-            Copyright &copy; {{ with .Site.Copyright | default .Site.Title }} {{ . | safeHTML }}, {{ now.Format "2006"}}
-            All rights reserved.{{ end }}
+            <a class="hover-black black-70" href="{{ .Site.Home.Permalink }}{{ .Site.Params.footerPrivacyUrl }}">
+                {{ .Site.Params.footerPrivacy }}
+            </a>
+            Copyright &copy; {{ with .Site.Copyright | default .Site.Title }} {{ . | safeHTML }}, {{ now.Format "2006"}} All rights reserved.{{ end }}
         </div>
         <div>
             {{ partial "social-follow.html" . }}
