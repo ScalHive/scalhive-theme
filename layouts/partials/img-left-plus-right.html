@@ -12,7 +12,7 @@
 {{ if ge $sections_count_left 1 }}
 <div class="pv3 ph4 pa4-l w-100 mw8-5 center">
     {{ if .Params.section_title_one }}
-        <h2 class="lh-copy f3-l f4 mt0 mb4" style="color:{{ $.Param "middle_title_color_code" | default "#555555" }};" >
+        <h2 class="lh-copy f3-l f4 mt0 mb4" style="color:{{ $.Param "middle_title_color" | default "#181818" }};" >
             {{ .Params.section_title_one }}
         </h2>
     {{ end }}
@@ -34,7 +34,7 @@
 {{ if ge $sections_count_right 1 }}
 <div class="pa3 pa4-l ph4-m w-100 mw8-5 center">
     {{ if .Params.section_title_two }}
-    <div class="lh-copy f4 ph3-ns" style="color:{{ $.Param "middle_title_color_code" | default "#555555" }};" >
+    <div class="lh-copy f4 ph3-ns" style="color:{{ $.Param "middle_title_color" | default "#181818" }};" >
         <h2 class="lh-copy f3-l f4" >
             {{ .Params.section_title_two }}
         </h2>

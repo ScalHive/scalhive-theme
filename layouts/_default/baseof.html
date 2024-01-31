@@ -44,7 +44,7 @@
 
   </head>
 
-  <body style="background-color:{{ $.Param "body_background_color" | default "white" }};" class="ma0 {{ $.Param "body_classes"  | default "avenir bg-near-white"}}{{ with getenv "HUGO_ENV" }} {{ . }}{{ end }}">
+  <body style="background-color:{{ $.Param "body_background_color" | default "#fefefa" }};" class="ma0 {{ $.Param "body_classes"  | default "avenir bg-near-white"}}{{ with getenv "HUGO_ENV" }} {{ . }}{{ end }}">
     <div class="page-container">
       <button onclick="topFunction()" id="btnBackToTop" ></button>
       <div class="page-content">

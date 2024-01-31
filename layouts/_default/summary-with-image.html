@@ -14,14 +14,14 @@
         {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
         <div class="{{ cond (eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3 pr0-ns" }} w-100-ns w-70">
           <a href="{{.RelPermalink}}" class="db grow">
-            <img src="{{ $featured_image }}" class="img obj-fit-cover border-radius" alt="image from {{ .Title }}">
+            <img src="{{ $featured_image }}" class="img obj-fit-cover border-radius shaded-box" alt="image from {{ .Title }}">
           </a>
         </div>
         {{ end }}
       {{ end }}
       <div class="blah pt3-ns w-100-ns {{ if $featured_image }} w-80 {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pr3" "pl3-l pl2-ns" }}{{ end }}">
-        <h2 class="tc f3 f4-m fw1 athelas mt0 mb0-m lh-title text-bold color-link" style="color:{{ $.Param "middle_title_color_code" | default "#555555" }};" >
-          <a href="{{.RelPermalink}}" class="title-text-font" style="color:{{ $.Param "middle_title_color_code" | default "#555555" }};">
+        <h2 class="tc f3 f4-m fw1 athelas mt0 mb0-m lh-title text-bold title-text-font color-link" style="color:{{ $.Param "middle_title_color" | default "#181818" }};" >
+          <a href="{{.RelPermalink}}" class="title-text-font" style="color:{{ $.Param "middle_title_color" | default "#181818" }};">
             {{ .Title }}
             </a>
         </h2>
@@ -33,7 +33,7 @@
         <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
           {{ .Summary }}
         </div>
-          <a href="{{.RelPermalink}}" class="ba white br2 dib f7 hover-bg-moon-gray link mt2 ph3 pv1" style="background-color:{{ $.Param "middle_title_color_code" | default "#555555" }};">{{ .Site.Params.read_more_button | default (i18n "readMore") }}</a>
+          <a href="{{.RelPermalink}}" class="ba white br2 dib f7 hover-bg-moon-gray link mt2 ph3 pv1" style="background-color:{{ $.Param "middle_title_color" | default "#181818" }};">{{ .Site.Params.read_more_button | default (i18n "readMore") }}</a>
         {{/* TODO: add author
         <p class="f6 lh-copy mv0">By {{ .Author }}</p> */}}
       </div>

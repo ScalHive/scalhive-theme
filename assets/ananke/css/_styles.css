@@ -82,6 +82,12 @@
 .border-radius{
   border-radius: 1rem;
 }
+.shaded-box {
+  width: 100%;
+  height: 100%;
+  background-color: #fefefa;
+  box-shadow: -2px 3px 15px rgb(24, 24, 24); /* X-offset, Y-offset, Blur radius, Shadow color */
+}
 .br-10{
   border-radius: 10px;
 }
@@ -414,7 +420,7 @@ textarea {
 }
 .color-link a:hover, .color-link a:active, .color-link a:focus {
   color: #fde74c;
-  opacity:0.6;
+  opacity:0.75;
   appearance: none;
 }
 
