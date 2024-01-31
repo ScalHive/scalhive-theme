@@ -27,9 +27,10 @@
 
         {{ else if eq .Params.layout "content-center" }}
         <div class="center cf pv5 ph5-m ph4 mw8 mw7-m">
-            <div class="title-text-font tc nested-copy-line-height lh-copy f4-l f5 {{ $.Param "text_color" | default "#454545" }}">
+            <div class="title-text-font tc nested-copy-line-height lh-copy f4-l f5 {{ $.Param "text_color" | default "#181818" }}">
                 {{ .Content }}
             </div>
+
         </div>
 
         {{ else }}
@@ -49,8 +50,12 @@
 </div>
 
 {{ if ne .Params.layout "contacts-with-google-form" }}
-    {{ if .Site.Params.footerContactButton }}
-        {{ partial "contact-us-btn.html" . }}
+    {{ if ne .Params.layout "content-center" }}
+        {{ if .Site.Params.footerContactButton }}
+            {{ partial "contact-us-btn.html" . }}
+        {{end}}
+    {{ else if eq .Params.layout "content-center" }}
+        {{ partial "to-main-page-btn.html" . }}
     {{ end }}
 {{ end }}
 
