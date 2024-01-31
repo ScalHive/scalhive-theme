@@ -43,7 +43,16 @@ Also includes examples of Hugo Features or Functions:
 
 This theme uses the "Tachyons" CSS library. This will allow you to manipulate the design of the theme by changing class names in HTML without touching the original CSS files. For more information see the [Tachyons website](https://tachyons.io/).
 
+## Tagging policy
 
+Versions in the "v0.1.2" format are marked with tags, where:
+- the first number - displays the main version;
+- the second number - displays a large feature (for example, adding a new page for the site);
+- the third number - displays hotfix.
+
+The latest commit after the pull request is tagged with the new version.
+Depending on the issue, either the second number (a large feature was added) or the
+third number (a hotfix was made) changes.
 
 ## Installation
 
@@ -327,14 +336,3 @@ Note: The above command will not work on Windows. If you are running a Windows O
 set HUGO_ENV=production
 hugo
 ```
-
-## Contributing
-
-If you find a bug or have an idea for a feature, feel free to use the [issue tracker](https://github.com/theNewDynamic/gohugo-theme-ananke/issues) to let me know.
-
-
-
-
-TODO:
-
-- fix hard-coded link to [section](https://github.com/theNewDynamic/gohugo-theme-ananke/blob/master/layouts/index.html#L32)
