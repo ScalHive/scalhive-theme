@@ -1,6 +1,5 @@
 //for desktop
-const nav_item = document.querySelectorAll('.nav-menu-list-item');
-nav_item.forEach(
+document.querySelectorAll('.nav-menu-list-item').forEach(
     (nav_link) => {
         if(nav_link.href === window.location.href){
             nav_link.setAttribute('aria-current', 'page');
@@ -9,8 +8,7 @@ nav_item.forEach(
 )
 
 // for mobile
-const nav_item_m = document.querySelectorAll('.nav-menu-list-item-m');
-nav_item_m.forEach(
+document.querySelectorAll('.nav-menu-list-item-m').forEach(
     (nav_link) => {
         if(nav_link.href === window.location.href){
             nav_link.setAttribute('aria-current', 'page');

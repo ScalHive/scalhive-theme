@@ -10,7 +10,7 @@
         src="{{ $res.RelPermalink }}"
         alt="{{ .Params.alt }}"
         {{- if .Params.img_render_class -}}
-            class="{{ .Params.img_render_class }}"
+            class="obj-fit-cover {{ .Params.img_render_class }}"
         {{- end -}}
     >
 </section>
