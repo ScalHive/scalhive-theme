@@ -5,7 +5,7 @@
       {{ if .Params.summary_image }}
       {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
       <div class="{{ cond (eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3 pr0-ns" }} w-100-ns w-40">
-      <a href="{{.RelPermalink}}" class="db grow w-100">
+      <a href="{{.RelPermalink}}" class="db mh2-ns grow w-100">
         {{ partial "image-srcset.html" . }}
       </a>
       </div>
@@ -13,7 +13,7 @@
         {{ if $featured_image }}
         {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
         <div class="{{ cond (eq $.Site.Language.LanguageDirection "rtl") "pl3" "pr3 pr0-ns" }} w-100-ns w-70">
-          <a href="{{.RelPermalink}}" class="db grow">
+          <a href="{{.RelPermalink}}" class="mh2-ns db grow">
             <img src="{{ $featured_image }}" class="img obj-fit-cover border-radius shaded-box" alt="image from {{ .Title }}">
           </a>
         </div>

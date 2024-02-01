@@ -47,7 +47,7 @@
       {{ range .Site.Menus.main }}
       {{ if .HasChildren }}
         <li class="list f5 fw4 parent-menu-line bb b--black-10">
-          <a class="nav-font nav-menu-list-item-m hover-black no-underline pa2 fw4" href="{{ .URL }}" style="color:{{ $.Param "middle_title_color_code" | default "#555555" }};">
+          <a class="nav-font nav-menu-list-item-m hover-black no-underline pa2 fw4" href="{{ .URL }}" style="color:{{ $.Param "middle_title_color_code" | default "#2F2F2F" }};">
           {{ .Pre }}
           <span>{{ .Name }}</span>
           <span>{{ .PageRef }}</span>
@@ -63,7 +63,7 @@
         </li>
       {{ else }}
         <li class="list f5 fw4 parent-menu-line bb b--black-10">
-          <a class="nav-font nav-menu-list-item-m hover-black no-underline pa2 fw4" href="{{ .URL }}" style="color:{{ $.Param "middle_title_color_code" | default "#555555" }};">
+          <a class="nav-font nav-menu-list-item-m hover-black no-underline pa2 fw4" href="{{ .URL }}" style="color:{{ $.Param "middle_title_color_code" | default "#2F2F2F" }};">
           {{ .Pre }}
           <span>{{ .Name }}</span>
           <span>{{ .PageRef }}</span>

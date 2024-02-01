@@ -8,7 +8,7 @@
           {{ partial "image-srcset.html" . }}
         </div>
       {{ end }}
-      <div class="blah w-100-ns w-60-l w-50-m {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pr3-l" "pl3-l" }}">
+      <div class="blah mt3-ns w-100-ns w-60-l w-50-m {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pr3-l" "pl3-l" }}">
         <h3 class="f3-l f4 fw4 lh-title tl title-text-font" style="color:{{ $.Param "middle_title_color" | default "#181818" }};">
           {{ .Title }}
         </h3>
