@@ -29,7 +29,7 @@
 
 {{- $set := delimit $srcset "," -}}
 
-<figure class="overflow-hidden {{ .Params.figure_render_class }}">
+<figure class="overflow-hidden mh2-ns mh3-m mh3-l mv0-ns mv2 {{ .Params.figure_render_class }}">
     <img
         srcset="{{ $set }}"
         sizes="(max-width: 480px) 480px, 100vw"

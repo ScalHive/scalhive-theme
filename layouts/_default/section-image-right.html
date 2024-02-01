@@ -1,17 +1,17 @@
 <section>
-  <div class="db pv4 pv3-ns ph3 ph0-l no-underline #181818">
-    <div class="flex flex-column-ns ">
+  <div class="db pv4 pv0-ns ph0-ns mv3-ns ph3 ph0-l no-underline #181818">
+    <div class="flex flex-column-reverse-ns ">
       <div class="blah w-100-ns w-60-l w-50-m {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pr3-l" "pl3-l" }}">
-      <h3 class="f3-l f4 fw4 lh-title tl title-text-font" style="color:{{ $.Param "middle_title_color" | default "#181818" }};">
-      {{ .Title }}
-      </h3>
-      <div class="f5 f6-m lh-copy nested-copy-line-height nested-links basic-text-font" style="color:{{ $.Param "subtitle_text_color" | default "#181818" }};">
-      {{ .Content }}
-    </div>
-  </div>
+        <h3 class="f3-l f4 fw4 lh-title tl title-text-font" style="color:{{ $.Param "middle_title_color" | default "#181818" }};">
+          {{ .Title }}
+        </h3>
+        <div class="f5 f6-m lh-copy nested-copy-line-height nested-links basic-text-font" style="color:{{ $.Param "subtitle_text_color" | default "#181818" }};">
+          {{ .Content }}
+        </div>
+      </div>
       {{ if .Params.section_image }}
         {{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
-        <div class="{{ cond (eq $.Site.Language.LanguageDirection "rtl") "pr3-l" "pl3-l" }} w-100-ns w-60-l w-50-m">
+        <div class="mv2-ns {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pr3-l" "pl3-l" }} w-100-ns w-60-l w-50-m">
           {{ partial "image-srcset.html" . }}
         </div>
       {{ end }}

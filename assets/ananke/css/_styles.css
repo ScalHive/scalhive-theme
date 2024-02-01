@@ -260,8 +260,9 @@ hr.footer-line {
 }
 
 figure {
-  margin-inline-start: 10px;
-  margin-inline-end: 10px;
+  margin: 0;
+  /*margin-inline-start: 10px;*/
+  /*margin-inline-end: 10px;*/
 }
 
 figcaption {

@@ -5,12 +5,10 @@
 {{- $res = resources.Get .Params.summary_image -}}
 {{ end }}
 
-<section class="overflow-hidden h-100 w-100 {{ .Params.figure_render_class }}">
+<section class="overflow-hidden h-100 w-100 pa0">
     <img
+        class="obj-fit-cover"
         src="{{ $res.RelPermalink }}"
         alt="{{ .Params.alt }}"
-        {{- if .Params.img_render_class -}}
-            class="obj-fit-cover {{ .Params.img_render_class }}"
-        {{- end -}}
     >
 </section>
