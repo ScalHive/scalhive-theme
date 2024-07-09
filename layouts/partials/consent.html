@@ -28,10 +28,10 @@
     }
 </style>
 <div id="consent-notice">
-    <span>We would like to use <a class="manage-consent" href="#manage-consent">third party code</a> to improve the functionality of this website.</span>
-    <button class="btn manage-consent">Manage preferences</button>
-    <button class="btn deny-consent">Deny</button>
-    <button class="btn approve-consent">Allow</button>
+    <span>{{ .Site.Params.consent_outer_message_1 }}<a class="manage-consent" href="#manage-consent">{{ .Site.Params.consent_inner_message }}</a>{{ .Site.Params.consent_outer_message_2 }}</span>
+    <button class="btn manage-consent">{{ .Site.Params.consent_manage }}</button>
+    <button class="btn deny-consent">{{ .Site.Params.consent_deny }}</button>
+    <button class="btn approve-consent">{{ .Site.Params.consent_allow }}</button>
 </div>
 <div id="consent-overlay">
     <div>
