@@ -72,6 +72,7 @@
     <script>
       var doNotTrack = localStorage.getItem("doNotTrack");
       if (doNotTrack === "0") {
+        console.log(doNotTrack)
         var script = document.createElement('script');
         script.src = "{{ .Site.BaseURL }}js/google_analytics.js";
         document.head.appendChild(script);
