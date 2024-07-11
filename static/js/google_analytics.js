@@ -10,7 +10,6 @@
     if (!doNotTrack) {
         var gaScript = document.createElement('script');
         gaScript.src = "https://www.googletagmanager.com/gtag/js?id=" + gaID;
-        gaScript.async = true;
         document.head.appendChild(gaScript);
 
         gaScript.onload = function () {
