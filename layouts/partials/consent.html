@@ -74,7 +74,6 @@
             expires = "; expires=" + date.toUTCString();
         }
         document.cookie = name + "=" + value + expires + "; path=/";
-        console.log("Cookie created: " + name + "=" + value + expires + "; path=/");
     }
 
     function readCookie(name) {
@@ -92,13 +91,6 @@
         createCookie(name, "", -1);
     }
 
-    function loadScript(src) {
-        var script = document.createElement('script');
-        script.src = src;
-        script.async = true;
-        document.head.appendChild(script);
-    }
-
     function checkConsent() {
         if (readCookie('cookie-notice-option') === 'true') {
             localStorage.setItem("doNotTrack", "0");
@@ -112,12 +104,14 @@
 
         document.getElementById('cookie-notice-accept').addEventListener("click", function () {
             createCookie('cookie-notice-option', 'true', 31);
+            localStorage.setItem("doNotTrack", "0");
             document.getElementById('consent-notice').style.display = 'none';
             location.reload();
         });
 
         document.getElementById('cookie-notice-deny').addEventListener("click", function () {
             createCookie('cookie-notice-option', 'false', 31);
+            localStorage.setItem("doNotTrack", "1");
             document.getElementById('consent-notice').style.display = 'none';
             location.reload();
         });

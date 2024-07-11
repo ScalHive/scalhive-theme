@@ -60,13 +60,23 @@
 </html>
 
 <!-- Google Analytics internal template -->
-{{- if .Site.GoogleAnalytics }}
 <script>
+  // Check if doNotTrack is null, and if so, set a default value
   if (localStorage.getItem("doNotTrack") === null) {
-    localStorage.setItem("doNotTrack", "1") // default value before any choice has been made
+    localStorage.setItem("doNotTrack", "1"); // default value before any choice has been made
   }
   var doNotTrack = localStorage.getItem("doNotTrack");
 </script>
-{{ template "partials/consent.html" . }}
-{{ template "_default/google_analytics.html" . }}
+{{- if .Site.GoogleAnalytics }}
+  {{- if not .Site.Config.Privacy.GoogleAnalytics.Disable }}
+    <script>
+      var doNotTrack = localStorage.getItem("doNotTrack");
+      if (doNotTrack === "0") {
+        var script = document.createElement('script');
+        script.src = "{{ .Site.BaseURL }}js/google_analytics.js";
+        document.head.appendChild(script);
+      }
+    </script>
+  {{- end }}
+  {{ template "partials/consent.html" . }}
 {{- end}}
