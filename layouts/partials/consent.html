@@ -27,11 +27,12 @@
         #consent-notice button.btn {position: relative; bottom: 4px;}
     }
 </style>
+
 <div id="consent-notice">
     <span>{{ .Site.Params.consent_outer_message_1 }}<a class="manage-consent" href="#manage-consent">{{ .Site.Params.consent_inner_message }}</a>{{ .Site.Params.consent_outer_message_2 }}</span>
-    <button class="btn manage-consent">{{ .Site.Params.consent_manage }}</button>
-    <button class="btn deny-consent">{{ .Site.Params.consent_deny }}</button>
-    <button class="btn approve-consent">{{ .Site.Params.consent_allow }}</button>
+    <button id="manage-consent" class="btn manage-consent">{{ .Site.Params.consent_manage }}</button>
+    <button id="cookie-notice-deny" class="btn deny-consent">{{ .Site.Params.consent_deny }}</button>
+    <button id="cookie-notice-accept" class="btn approve-consent">{{ .Site.Params.consent_allow }}</button>
 </div>
 <div id="consent-overlay">
     <div>
@@ -40,22 +41,22 @@
         {{ $details_link := .Site.Params.consent_details_link }}
         {{ $details := .Site.Params.consent_details }}
         {{ range $index, $item := .Site.Data.consent.items }}
-        <div>
-            <input type="checkbox" id="item{{ $index }}" value="1" name="item{{ $index }}"
-                   {{ if $item.is_checked }} checked {{ end }}
-                   {{ if $item.is_functional }} disabled {{ end }}
-            >
-            <label for="item{{ $index }}">
-                <h3>{{ $item.title }}</h3>
-                <p>{{ $description }}</p>
-                {{ if $details_link }}
-                {{ $details }}:
-                <a class="hover-black black-70" href="{{ .Site.Home.Permalink }}{{ $details_link }}" target="_blank">
-                    {{ $details_link_name }}
-                </a>
-                {{ end }}
-            </label>
-        </div>
+            <div>
+                <input type="checkbox" id="item{{ $index }}" value="1" name="item{{ $index }}"
+                       {{ if $item.is_checked }} checked {{ end }}
+                       {{ if $item.is_functional }} disabled {{ end }}
+                >
+                <label for="item{{ $index }}">
+                    <h3>{{ $item.title }}</h3>
+                    <p>{{ $description }}</p>
+                    {{ if $details_link }}
+                        {{ $details }}:
+                        <a class="hover-black black-70" href="{{ .Site.Home.Permalink }}{{ $details_link }}" target="_blank">
+                            {{ $details_link_name }}
+                        </a>
+                    {{ end }}
+                </label>
+            </div>
         {{ end }}
         <div>
             <button id="save-consent" class="btn save-consent" data-consentvalue="{{ range $index, $item := .Site.Data.consent.items }}{{ if $item.is_functional}}{{ else }}0{{ end }}{{ end }}">{{ .Site.Params.consent_save_preferences }}</button>
@@ -63,121 +64,62 @@
         </div>
     </div>
 </div>
+
 <script>
-
-    const scripts = [];{{ range $index, $item := (where .Site.Data.consent.items "is_functional" false) }}
-    scripts[{{ $index }}] = "/js/{{ $item.script_file }}";{{ end }}
-
-    function createCookie(name,value,days) {
+    function createCookie(name, value, days) {
         var expires = "";
         if (days) {
             var date = new Date();
-            date.setTime(date.getTime() + (days*24*60*60*1000));
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
             expires = "; expires=" + date.toUTCString();
         }
         document.cookie = name + "=" + value + expires + "; path=/";
+        console.log("Cookie created: " + name + "=" + value + expires + "; path=/");
     }
+
     function readCookie(name) {
         var nameEQ = name + "=";
         var ca = document.cookie.split(';');
-        for(var i=0;i < ca.length;i++) {
+        for (var i = 0; i < ca.length; i++) {
             var c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1,c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
         }
         return null;
     }
+
     function eraseCookie(name) {
-        createCookie(name,"",-1);
-    }
-    function denyAllConsentScripts() {
-        var consentValue = "";
-        scripts.forEach(function(){
-            consentValue = consentValue + "0";
-        });
-        acceptSomeConsentScripts(consentValue);
-    }
-    function acceptAllConsentScripts() {
-        var consentValue = "";
-        scripts.forEach(function(){
-            consentValue = consentValue + "1";
-        });
-        acceptSomeConsentScripts(consentValue);
-    }
-    function acceptSomeConsentScripts(consentValue) {
-        setConsentInputs(consentValue);
-        createCookie('consent-settings',consentValue,31);
-        document.getElementById('consent-notice').style.display = 'none';
-        document.getElementById('consent-overlay').classList.remove('active');
-        loadConsentScripts(consentValue);
-    }
-    function loadConsentScripts(consentValue) {
-        scripts.forEach(function(value,key){
-            //console.log('script'+key+' is set to ' +consentValue[key]+' and is file '+value);
-            if(consentValue[key]=="1") {
-                var s = document.createElement('script');
-                s.type = 'text/javascript';
-                s.src = value;
-                document.body.appendChild(s);
-            }
-        });
-    }
-    function setConsentInputs(consentValue) {
-        var elements = document.querySelectorAll('#consent-overlay input:not([disabled])');
-        elements.forEach(function(el,index) {
-            if(consentValue[index]=="1") el.checked = true;
-            else el.checked = false;
-        });
-    }
-    function setConsentValue() {
-        var elements = document.querySelectorAll('#consent-overlay input:not([disabled])');
-        var consentValue = "";
-        elements.forEach(function(el) {
-            if(el.checked) consentValue = consentValue + "1";
-            else consentValue = consentValue + "0";
-        });
-        document.getElementById("save-consent").dataset.consentvalue = consentValue;
+        createCookie(name, "", -1);
     }
 
-    if(readCookie('consent-settings')) {
-        var consentValue = readCookie('consent-settings').toString();
-        //console.log(consentValue);
-        setConsentInputs(consentValue);
-        loadConsentScripts(consentValue);
-    } else {
-        document.getElementById('consent-notice').style.display = 'block';
+    function loadScript(src) {
+        var script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        document.head.appendChild(script);
     }
-    var elements = document.querySelectorAll('.manage-consent');
-    elements.forEach(function(el) {
-        el.addEventListener("click",function() {
-            document.getElementById('consent-overlay').classList.toggle('active');
-        });
-    });
-    var elements = document.querySelectorAll('.deny-consent');
-    elements.forEach(function(el) {
-        el.addEventListener("click",function() {
-            denyAllConsentScripts();
-        });
-    });
-    var elements = document.querySelectorAll('.approve-consent');
-    elements.forEach(function(el) {
-        el.addEventListener("click",function() {
-            acceptAllConsentScripts();
-        });
-    });
-    document.getElementById("save-consent").addEventListener("click",function() {
-        setConsentValue();
-        acceptSomeConsentScripts(this.dataset.consentvalue);
-    });
-    document.getElementById("consent-overlay").addEventListener("click",function(e) {
-        if (!document.querySelector("#consent-overlay > div").contains(e.target)){
-            this.classList.toggle('active');
+
+    function checkConsent() {
+        if (readCookie('cookie-notice-option') === 'true') {
+            localStorage.setItem("doNotTrack", "0");
+        } else if (readCookie('cookie-notice-option') !== 'false') {
+            document.getElementById('consent-notice').style.display = 'block';
         }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        checkConsent();
+
+        document.getElementById('cookie-notice-accept').addEventListener("click", function () {
+            createCookie('cookie-notice-option', 'true', 31);
+            document.getElementById('consent-notice').style.display = 'none';
+            location.reload();
+        });
+
+        document.getElementById('cookie-notice-deny').addEventListener("click", function () {
+            createCookie('cookie-notice-option', 'false', 31);
+            document.getElementById('consent-notice').style.display = 'none';
+            location.reload();
+        });
     });
 </script>
-
-{{ range $index, $item := .Site.Data.consent.items }}
-{{ if $item.is_functional }}
-<script type="text/javascript" src="/js/{{ $item.script_file }}"></script>
-{{ end }}
-{{ end }}
