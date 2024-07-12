@@ -3,6 +3,10 @@
   vertical-align: middle;
   color: #BABABA;
   fill: currentColor;
+  margin-right: 15px;
+}
+.ananke-socials a:last-child{
+  margin-right: 0;
 }
 .ananke-socials a .icon svg{
   width: 32px;
@@ -13,7 +17,7 @@
 }
 .new-window {
   opacity: 0;
-  display: inline-block;
+  display: none;
   vertical-align: top;
 }
 .link-transition:hover .new-window{
@@ -21,5 +25,5 @@
 }
 
 a.dockerhub:hover {
-  color:#0091e2
+  color: #0091e2;
 }
