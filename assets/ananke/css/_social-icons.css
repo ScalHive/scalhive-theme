@@ -19,6 +19,7 @@
 .link-transition:hover .new-window{
   opacity: 1;
 }
-a.docker:hover {
+
+a.dockerhub:hover {
   color:#0091e2
 }
