@@ -1,78 +1,77 @@
 <!DOCTYPE html>
 <html lang="{{ site.LanguageCode | default "en" }}" {{- with partialCached "func/GetLanguageDirection" "GetLanguageDirection" }} dir="{{ . }}" {{- end }}>
-  <head itemscope>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    {{/* NOTE: the Site's title, and if there is a page title, that is set too */}}
-    <title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
-    <meta name="generator" content="Hugo {{ hugo.Version }}">
-    {{/* NOTE: For Production make sure you add `HUGO_ENV="production"` before your build command */}}
-    {{ $production := eq (getenv "HUGO_ENV") "production" | or (eq site.Params.env "production") }}
-    {{ $public := not .Params.private }}
+<head itemscope>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  {{/* NOTE: the Site's title, and if there is a page title, that is set too */}}
+  <title>{{ block "title" . }}{{ with .Params.Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{ end }}</title>
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+  <meta name="description" content="{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+  <meta name="generator" content="Hugo {{ hugo.Version }}">
+  {{/* NOTE: For Production make sure you add `HUGO_ENV="production"` before your build command */}}
+  {{ $production := eq (getenv "HUGO_ENV") "production" | or (eq site.Params.env "production") }}
+  {{ $public := not .Params.private }}
 
-    {{ if and $production $public }}
-      <meta name="robots" content="index, follow">
-    {{ else }}
-      <meta name="robots" content="noindex, nofollow">
-    {{ end }}
+  {{ if and $production $public }}
+    <meta name="robots" content="index, follow">
+  {{ else }}
+    <meta name="robots" content="noindex, nofollow">
+  {{ end }}
 
-    {{ partial "site-style.html" . }}
-    {{ partial "site-scripts.html" . }}
-    
-    {{ block "favicon" . }}
-      {{ partialCached "site-favicon.html" . }}
-    {{ end }}
+  {{ partial "site-style.html" . }}
+  {{ partial "site-scripts.html" . }}
 
-    {{ if .OutputFormats.Get "RSS" }}
+  {{ block "favicon" . }}
+    {{ partialCached "site-favicon.html" . }}
+  {{ end }}
+
+  {{ if .OutputFormats.Get "RSS" }}
     {{ with .OutputFormats.Get "RSS" }}
       <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" >
       <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" >
-      {{ end }}
     {{ end }}
-    
-    {{/* NOTE: These Hugo Internal Templates can be found starting at https://github.com/gohugoio/hugo/tree/master/tpl/tplimpl/embedded/templates */}}
-    {{- template "_default/opengraph.html" . -}}
-    {{- template "_default/schema.html" . -}}
-    {{- template "_default/twitter_cards.html" . -}}
+  {{ end }}
 
-    {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
-      {{ template "_default/google_analytics.html" . }}
-    {{ end }}
-	{{ block "head" . }}{{ partial "head-additions.html" . }}{{ end }}
+  {{/* NOTE: These Hugo Internal Templates can be found starting at https://github.com/gohugoio/hugo/tree/master/tpl/tplimpl/embedded/templates */}}
+  {{- template "_default/opengraph.html" . -}}
+  {{- template "_default/schema.html" . -}}
+  {{- template "_default/twitter_cards.html" . -}}
+</head>
 
-  </head>
-
-  <body style="background-color:{{ $.Param "body_background_color" | default "#fefefa" }};" class="ma0 {{ $.Param "body_classes"  | default "avenir bg-near-white"}}{{ with getenv "HUGO_ENV" }} {{ . }}{{ end }}">
-    <div class="page-container">
-      <button onclick="topFunction()" id="btnBackToTop" ></button>
-      <div class="page-content">
-        {{ block "header" . }}{{ partial "site-header.html" .}}{{ end }}
-        <main class="">
-          {{ block "main" . }}{{ end }}
-        </main>
-      </div>
-    {{ block "footer" . }}{{ partialCached "site-footer.html" . }}{{ end }}
-    </div>
-    {{ partial "consent.html" . }}
-  </body>
-</html>
+<body style="background-color:{{ $.Param "body_background_color" | default "#fefefa" }};" class="ma0 {{ $.Param "body_classes"  | default "avenir bg-near-white"}}{{ with getenv "HUGO_ENV" }} {{ . }}{{ end }}">
+<div class="page-container">
+  <button onclick="topFunction()" id="btnBackToTop" ></button>
+  <div class="page-content">
+    {{ block "header" . }}{{ partial "site-header.html" .}}{{ end }}
+    <main class="">
+      {{ block "main" . }}{{ end }}
+    </main>
+  </div>
+  {{ block "footer" . }}{{ partialCached "site-footer.html" . }}{{ end }}
+</div>
 
 <!-- Google Analytics internal template -->
+{{- with site.Config.Services.GoogleAnalytics.ID }}
+  <script >
+    window.googleAnalyticsID = '{{ . }}';
+  </script>
+{{- end }}
+{{- with site.Config.Privacy.GoogleAnalytics }}
+  <script >
+    window.respectDoNotTrack = '{{ .RespectDoNotTrack }}';
+  </script>
+{{- end }}
+
 <script>
-  // Check if doNotTrack is null, and if so, set a default value
   if (localStorage.getItem("doNotTrack") === null) {
-    localStorage.setItem("doNotTrack", "1"); // default value before any choice has been made
+    localStorage.setItem("doNotTrack", "true"); // default value before any choice has been made
   }
-  var doNotTrack = localStorage.getItem("doNotTrack");
 </script>
 {{- if .Site.GoogleAnalytics }}
   {{- if not .Site.Config.Privacy.GoogleAnalytics.Disable }}
     <script>
       var doNotTrack = localStorage.getItem("doNotTrack");
-      if (doNotTrack === "0") {
-        console.log(doNotTrack)
+      if (doNotTrack === "false") {
         var script = document.createElement('script');
         script.src = "{{ .Site.BaseURL }}js/google_analytics.js";
         document.head.appendChild(script);
@@ -81,3 +80,6 @@
   {{- end }}
   {{ template "partials/consent.html" . }}
 {{- end}}
+
+</body>
+</html>

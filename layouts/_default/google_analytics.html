@@ -5,7 +5,7 @@
         {{ else }}
             <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
             <script>
-                var doNotTrack = false;
+                var doNotTrack = localStorage.getItem("doNotTrack");
                 if ({{ site.Config.Privacy.GoogleAnalytics.RespectDoNotTrack }}) {
                     var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
                     var doNotTrack = (dnt == "1" || dnt == "yes");
