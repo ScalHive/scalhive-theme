@@ -1,7 +1,7 @@
 {{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
 {{ define "main" }}
 <div class="flex-l mt2 center color-link">
-    <div class="center mb6-m mb5">
+    <div class="center">
 
         {{ if eq .Params.layout "privacy"}}
         <div class="center cf pv5 pv4-m ph5 ph3-ns mw8">
@@ -42,10 +42,6 @@
         {{ end }}
 
     </div>
-</div>
-
-<div class="final-message-font center tc f4 f5-ns fw4 ph5-ns lh-title" style="color:{{ $.Param "final_message_color" | default "#454545" }};">
-    {{ .Params.final_message }}
 </div>
 
 {{ if ne .Params.layout "contacts-with-google-form" }}

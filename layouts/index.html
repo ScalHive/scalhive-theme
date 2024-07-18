@@ -8,10 +8,6 @@
 </article>
 {{ end }}
 
-<div class="final-message-font center mt2 tc f4 f5-ns fw4 pt4-ns ph5-ns lh-title" style="color:{{ $.Param "final_message_color" | default "#181818" }};">
-    {{ .Params.final_message }}
-</div>
-
 {{ if ne .Params.layout "contacts-with-google-form" }}
     {{ if .Site.Params.footerContactButton }}
         {{ partial "contact-us-btn.html" . }}
