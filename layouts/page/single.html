@@ -4,10 +4,22 @@
     <div class="center">
 
         {{ if eq .Params.layout "privacy"}}
-        <div class="center cf pv5 pv4-m ph5 ph3-ns mw8">
+        <div class="center cf pt5 pv4-m ph5 ph3-ns mw8">
+
+            {{/* Border line */}}
+            <div class="mv4 w-100 center">
+                <div class="bb b--black-10"></div>
+            </div>
+
             <div class="nested-copy-line-height lh-copy f5 f6-m privacy-page privacy-color-link">
                 {{ .Content }}
             </div>
+
+            {{/* Border line */}}
+            <div class="mt4 w-100 center">
+                <div class="bb b--black-10"></div>
+            </div>
+
         </div>
 
         {{ else if eq .Params.layout "img-right" }}
