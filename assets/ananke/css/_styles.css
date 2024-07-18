@@ -449,6 +449,7 @@ textarea {
 }
 
 @media all and (min-width: 1200px) {
+
   .f4-5-l {
     font-size: 1.12rem;
   }
@@ -467,6 +468,7 @@ textarea {
 }
 
 @media all and (min-width: 768px) and (max-width: 1200px) {
+
   .f0-m {
     font-size: 0;
   }
@@ -524,6 +526,11 @@ textarea {
   .page-content {
     padding-bottom: 238.5px;    /* Footer height */
   }
+
+  #btnBackToTop {
+    bottom: 76px;
+    right: 20px;
+  }
 }
 
 @media all and (max-width: 768px) {
@@ -559,7 +566,7 @@ textarea {
   }
 
   #btnBackToTop {
-    bottom: 20px;
+    bottom: 135px;
     right: 20px;
   }
 
