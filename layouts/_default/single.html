@@ -46,10 +46,16 @@
         <span class="f6 mv4 dib tracked"> - {{ i18n "wordCount" .WordCount }} </span>
       {{ end }}
     </header>
+    
+    {{/* Border line */}}
+    <div class="mt4 w-100 center">
+        <div class="bb b--black-10"></div>
+    </div>
+
     <div class="nested-copy-line-height lh-solid {{ $.Param "post_content_classes"  | default "serif"}} f4-5-l f5-m basic-text-font nested-links {{ $.Param "text_color" | default "#181818" }}">
       {{- .Content -}}
       {{- partial "tags.html" . -}}
-      <div class="mt6 instapaper_ignoref">
+      <div class="mt4 instapaper_ignoref">
       {{ if .Site.DisqusShortname }}
         {{ template "_internal/disqus.html" . }}
       {{ end }}
@@ -57,6 +63,11 @@
         {{- partial "commento.html" . -}}
       {{ end }}
       </div>
+    </div>
+
+    {{/* Border line */}}
+    <div class="mt4 w-100 center">
+        <div class="bb b--black-10"></div>
     </div>
 
 <!--    <aside class="w-30-l mt6-l">-->
