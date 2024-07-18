@@ -283,7 +283,7 @@ figcaption h4 {
 
 /* make footer bottom on small page */
 .page-content {
-  padding-bottom: 225px;    /* Footer height */
+  padding-bottom: 218.5px;    /* Footer height */
 }
 
 /* make footer bottom on small page */
@@ -505,11 +505,28 @@ textarea {
 
 }
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 479px) {
+  
+  .page-content {
+    padding-bottom: 240.8px;    /* Footer height */
+  }
+}
+
+@media all and (min-width: 480px) and (max-width: 768px) {
 
   .page-content {
-    padding-bottom: 229px;    /* Footer height */
+    padding-bottom: 227px;    /* Footer height */
   }
+}
+
+@media all and (min-width: 769px) and (max-width: 1199px) {
+
+  .page-content {
+    padding-bottom: 238.5px;    /* Footer height */
+  }
+}
+
+@media all and (max-width: 768px) {
 
   .max-h-20-ns{
     max-height: 20rem;
