@@ -8,6 +8,33 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
   <meta name="description" content="{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
   <meta name="generator" content="Hugo {{ hugo.Version }}">
+
+  <!-- Google Tag Manager -->
+  <script>
+    if (localStorage.getItem("doNotTrack") === null) {
+      localStorage.setItem("doNotTrack", "true"); // default value before any choice has been made
+    }
+  </script>
+  {{ if $.Site.Params.gtm }}
+  <script>
+    var doNotTrack = localStorage.getItem("doNotTrack");
+    if (doNotTrack === "false") {
+      var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+      if (dnt == "1" || dnt == "yes") {
+        doNotTrack = true;
+      }
+      if (!doNotTrack || doNotTrack === "false") {
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','{{ $.Site.Params.gtm }}');
+      }
+    }
+  </script>
+  {{ end }}
+  <!-- End Google Tag Manager -->
+
   {{/* NOTE: For Production make sure you add `HUGO_ENV="production"` before your build command */}}
   {{ $production := eq (getenv "HUGO_ENV") "production" | or (eq site.Params.env "production") }}
   {{ $public := not .Params.private }}
@@ -41,6 +68,14 @@
 </head>
 
 <body style="background-color:{{ $.Param "body_background_color" | default "#fefefa" }};" class="ma0 {{ $.Param "body_classes"  | default "avenir bg-near-white"}}{{ with getenv "HUGO_ENV" }} {{ . }}{{ end }}">
+
+<!-- Google Tag Manager (noscript) -->
+{{ if $.Site.Params.gtm }}
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ $.Site.Params.gtm }}"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+{{ end }}
+<!-- End Google Tag Manager (noscript) -->
+
 <div class="page-container">
   <button onclick="topFunction()" id="btnBackToTop" ></button>
   <div class="page-content">
@@ -54,37 +89,3 @@
 {{ partial "consent.html" . }}
 </body>
 </html>
-
-<!-- Google Analytics -->
-<script>
-  if (localStorage.getItem("doNotTrack") === null) {
-    localStorage.setItem("doNotTrack", "true"); // default value before any choice has been made
-  }
-</script>
-{{- if .Site.GoogleAnalytics }}
-  {{- if not .Site.Config.Privacy.GoogleAnalytics.Disable }}
-    <script>
-      var doNotTrack = localStorage.getItem("doNotTrack");
-      if (doNotTrack === "false") {
-        if ({{ .Site.Config.Privacy.GoogleAnalytics.RespectDoNotTrack }}) {
-          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
-          doNotTrack = (dnt == "1" || dnt == "yes");
-        }
-
-        if (!doNotTrack) {
-          var gaScript = document.createElement('script');
-          gaScript.src = "https://www.googletagmanager.com/gtag/js?id={{ .Site.Config.Services.GoogleAnalytics.ID }}";
-          gaScript.async = true;
-          document.head.appendChild(gaScript);
-
-          gaScript.onload = function () {
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', {{ .Site.Config.Services.GoogleAnalytics.ID }});
-          };
-        }
-      }
-    </script>
-  {{- end }}
-{{- end}}
