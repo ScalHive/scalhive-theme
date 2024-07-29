@@ -1,3 +1,3 @@
-module github.com/TNTU-RS-internship/scalhive-theme
+module github.com/ScalHive/scalhive-theme
 
 go 1.14
